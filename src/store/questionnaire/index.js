@@ -25,7 +25,7 @@ export default {
   },
   actions: {
     [FETCH_QUESTIONS]: async ({ commit }) => {
-      const { data } = await axios.get('/questions.json')
+      const { data } = await axios.get('/questionnaire-vue/questions.json')
       commit(SET_QUESTIONS, data)
     },
     [QUESTIONNAIRE_CHANGE_STATE_DIALOGUE]: ({ commit }, isOpen) => {
