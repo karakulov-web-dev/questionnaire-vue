@@ -1,0 +1,116 @@
+[
+  {
+    "id": "id1",
+    "order": 1,
+    "question": "How often do you visit our site?",
+    "type": "radio",
+    "options": [
+      {
+        "label": "A couple of times a month",
+        "value": "value1"
+      },
+      {
+        "label": "Once a week",
+        "value": "value2"
+      },
+      {
+        "label": "Few times a week",
+        "value": "value3"
+      },
+      {
+        "label": "Every day",
+        "value": "value4"
+      },
+      {
+        "label": "Several times a day",
+        "value": "value5"
+      }
+    ],
+    "next": {
+      "type": "target",
+      "id": "id2"
+    }
+  },
+  {
+    "id": "id2",
+    "order": 2,
+    "question": "Are you comfortable using our site?",
+    "type": "radio",
+    "options": [
+      {
+        "label": "Comfortable",
+        "value": "value1"
+      },
+      {
+        "label": "Not very comfortable",
+        "value": "value2"
+      },
+      {
+        "label": "Very uncomfortable",
+        "value": "value3"
+      }
+    ],
+    "next": {
+      "type": "choice",
+      "options": {
+        "value1": "id3",
+        "value2": "id4",
+        "value3": "id4"
+      }
+    }
+  },
+  {
+    "id": "id3",
+    "order": 3,
+    "question": "Tell us what exactly you do not like?",
+    "type": "text",
+    "options": [],
+    "next": {
+      "type": "target",
+      "id": "id5"
+    }
+  },
+  {
+    "id": "id4",
+    "order": 3,
+    "question": "Tell us what you like most about our site?",
+    "type": "text",
+    "options": [],
+    "next": {
+      "type": "target",
+      "id": "id5"
+    }
+  },
+  {
+    "id": "id5",
+    "order": 4,
+    "question": "What changes would you like?",
+    "type": "checkbox",
+    "options": [
+      {
+        "label": "Design change",
+        "value": "value1"
+      },
+      {
+        "label": "Newsletter",
+        "value": "value2"
+      },
+      {
+        "label": "Online consultations",
+        "value": "value3"
+      }
+    ],
+    "next": {
+      "type": "target",
+      "id": "id6"
+    }
+  },
+  {
+    "id": "id6",
+    "order": 5,
+    "question": "Is there anything else you want to tell us?",
+    "type": "text",
+    "options": [],
+    "next": {}
+  }
+]

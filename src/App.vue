@@ -1,28 +1,59 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <el-button
+      type="primary"
+      @click="openDialogue"
+    >
+      Open
+    </el-button>
+    <QuestionnaireDialogue
+      v-if="isOpen"
+      :questions="questions"
+      title="Please answer a few questions"
+      initial-id="id1"
+      @close="closeDialogue"
+      @submit="submit"
+    />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import QuestionnaireDialogue from './components/QuestionnaireDialogue/index'
+import { QUESTIONNAIRE_CHANGE_STATE_DIALOGUE, FETCH_QUESTIONS } from './store/questionnaire/index'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    QuestionnaireDialogue
+  },
+  computed: {
+    ...mapState({
+      isOpen: state => state.questionnaire.isOpen,
+      questions: state => state.questionnaire.questions
+    })
+  },
+  created () {
+    this.fetch()
+  },
+  methods: {
+    ...mapActions('questionnaire', {
+      changeStateDialogue: QUESTIONNAIRE_CHANGE_STATE_DIALOGUE,
+      fetch: FETCH_QUESTIONS
+    }),
+    submit () {
+      this.closeDialogue()
+    },
+    closeDialogue () {
+      this.changeStateDialogue(false)
+    },
+    openDialogue () {
+      this.changeStateDialogue(true)
+    }
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
